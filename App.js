@@ -1,19 +1,33 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import styled from 'styled-components/native'
+// import { Text } from 'react-native'
 
-export default function App() {
+const CenterView = styled.View`
+  flex: 1;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+`
+
+const Text = styled.Text`
+  color: #ccc;
+  font-size: 40px;
+`
+
+export default function App () {
+  console.log('hhh')
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+    <CenterView>
+      <Text>Open up App.js to start working on!</Text>
+    </CenterView>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center'
+//   }
+// })
