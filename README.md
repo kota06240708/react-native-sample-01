@@ -25,6 +25,7 @@ React Native の実装のサンプル
 
 - [React Native + Expo アプリを Publish(公開)する：テスト配布する方法](https://qiita.com/hitotch/items/5f72523fc4c769e31e3a)
 - [なぜか ios だと見れない](https://qiita.com/mizchi/items/4bcc82cbf4bbe8050993)
+  <br />
   ちなみこの問題は一度 ios の端末でログイン(Publish したアカウントに)したら見れるようになりました。
   アンドロイドはログインしなくても見れます。
 
