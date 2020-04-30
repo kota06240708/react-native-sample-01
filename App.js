@@ -18,7 +18,7 @@ export default function App () {
   console.log('hhh')
   return (
     <CenterView>
-      <Text>Open up App.js to start working on!</Text>
+      <Text>Open up App.js to start </Text>
     </CenterView>
   )
 }
