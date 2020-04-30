@@ -20,6 +20,18 @@ React Native の実装のサンプル
 ### 開発
 
 - ['react native で styled-components を使う'](https://qiita.com/totoro081295/items/c9529025253c53c0f443)
+- ['typeScript 対応'](https://qiita.com/tatane616/items/807f08b71748e3d4630f)
+- ['svg を使うときの注意点'](https://qiita.com/gaishimo/items/7a7cd291dca3726e3f95)
+- ['デバッグ'](https://qiita.com/takaishota/items/96802dc7e522aeba058b)
+
+### UI
+
+- ['React Native Elements'](https://react-native-elements.github.io/react-native-elements/)
+- ['レスポンシブ対応するときはこれを使う'](https://qiita.com/kaba/items/a595ef1e1cad74fc09d5)
+
+### animation
+
+- [アニメーション一覧](https://bagelee.com/programming/react-native/animation-react-native/)
 
 ### Publish 公開
 
@@ -40,3 +52,4 @@ React Native の実装のサンプル
 ### その他
 
 - ['React Native の実は使ってはダメなライブラリ素晴らしいライブラリ'](https://qiita.com/kaba/items/569aafd80889bb5d9328)
+- ['普通に参考になった記事'](https://tech.asoview.co.jp/entry/2019/12/10/085554)
