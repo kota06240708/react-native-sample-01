@@ -1,4 +1,7 @@
 import React, { FC, ReactElement } from 'react'
+import { Provider } from 'react-redux';
+
+import store from './src/store'
 import styled from 'styled-components/native'
 
 import Count from './src/comments/Count';
@@ -18,9 +21,11 @@ const CenterView: any = styled.View`
 
 const App: FC = (): ReactElement => {
   return (
-    <CenterView>
-      <Count />
-    </CenterView>
+    <Provider store={store}>
+      <CenterView>
+        <Count />
+      </CenterView>
+    </Provider>
   )
 }
 

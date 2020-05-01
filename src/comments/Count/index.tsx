@@ -1,5 +1,10 @@
-import React, { FC, ReactElement, useState } from 'react'
+import React, { FC, ReactElement } from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import styled from 'styled-components/native'
+
+import IState from '../../types/store'
+
+import { countUp } from '../../actions/AppAction'
 // import { Text } from 'react-native'
 
 const Wrap: any = styled.View`
@@ -31,22 +36,21 @@ const Button: any = styled.Button`
 `
 
 const Count: FC = (): ReactElement => {
-  const [getState, setState]: any = useState<number>(0)
+  const dispatch = useDispatch();
+  const onClick = () => dispatch(countUp())
 
-  const countUp = () => {
-    setState(getState + 1);
-  }
+  const appSelecter = useSelector((state: IState) => state.app.count);
 
   return (
     <Wrap>
       <View>
-        <Text>{getState}</Text>
+        <Text>{appSelecter}</Text>
       </View>
       <ButtonWrap>
         <Button
           title="Couny Up"
           color="#fff"
-          onPress={() => countUp()}
+          onPress={onClick}
         />
       </ButtonWrap>
     </Wrap>
