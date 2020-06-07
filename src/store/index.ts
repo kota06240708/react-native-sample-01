@@ -1,12 +1,25 @@
-import { combineReducers, createStore } from 'redux'
+import { createStore, applyMiddleware, Middleware } from 'redux'
 
-import IState from '../types/store'
-import appReducer from '../reducers/AppAction'
+import reducers from '../reducers'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
-const reducers = combineReducers<IState>({
-  app: appReducer
-})
+import think from 'redux-thunk'
+import { createLogger } from 'redux-logger'
 
-const store = createStore(reducers)
+const middleweres: Middleware[] = [think]
+
+if (process.env.NODE_ENV === 'development') {
+  const logger: Middleware = createLogger({
+    collapsed: true,
+    diff: true
+  })
+
+  middleweres.push(logger)
+}
+
+const store = createStore(
+  reducers,
+  composeWithDevTools(applyMiddleware(...middleweres))
+)
 
 export default store

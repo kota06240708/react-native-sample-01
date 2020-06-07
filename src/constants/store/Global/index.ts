@@ -1,0 +1,1 @@
+export const SET_HEADER_STATUE = 'SET_HEADER_STATUE'

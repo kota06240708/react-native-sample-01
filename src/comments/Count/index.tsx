@@ -1,17 +1,16 @@
 import React, { FC, ReactElement } from 'react'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/native'
 
 import IState from '../../types/store'
 
 import { countUp } from '../../actions/AppAction'
-// import { Text } from 'react-native'
 
 const Wrap: any = styled.View`
   width: 100%;
 `
 
-const View: any = styled.View`
+const Views: any = styled.View`
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -21,37 +20,35 @@ const View: any = styled.View`
 const Text: any = styled.Text`
   color: #ccc;
   font-size: 40px;
+  text-align: center;
 `
 
 const ButtonWrap: any = styled.View`
   width: 50%;
-  background-color: #000;
-  color: #fff;
   margin: 0 auto;
 `
 
-const Button: any = styled.Button`
+const Button: any = styled.TouchableHighlight`
   width: 100%;
-  padding: 10px;
+  background-color: #000;
+  padding: 10px 40px;
 `
 
 const Count: FC = (): ReactElement => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const onClick = () => dispatch(countUp())
 
-  const appSelecter = useSelector((state: IState) => state.app.count);
+  const appSelecter = useSelector((state: IState) => state.app.count)
 
   return (
     <Wrap>
-      <View>
+      <Views>
         <Text>{appSelecter}</Text>
-      </View>
+      </Views>
       <ButtonWrap>
-        <Button
-          title="Couny Up"
-          color="#fff"
-          onPress={onClick}
-        />
+        <Button onPress={onClick}>
+          <Text>ちんこ</Text>
+        </Button>
       </ButtonWrap>
     </Wrap>
   )
