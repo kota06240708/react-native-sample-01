@@ -4,10 +4,12 @@ import styled from 'styled-components/native'
 
 import Header from './Header'
 import Count from './Count'
+import Footer from './Footer'
 
 const Wrap: any = styled.View`
   width: 100%;
   position: relative;
+  flex: 1;
 `
 
 const Index: FC = (): ReactElement => {
@@ -17,6 +19,7 @@ const Index: FC = (): ReactElement => {
     <Wrap>
       <Header />
       <Count />
+      <Footer />
     </Wrap>
   )
 }

@@ -7,10 +7,17 @@ export interface IHeaderStatus {
   y: number
 }
 
+export interface IFooterStatus extends IHeaderStatus {}
+
 export interface IHeaderStatusAction extends Action {
   payload: IHeaderStatus
 }
 
+export interface IFooterStatusAction extends Action {
+  payload: IFooterStatus
+}
+
 export interface IGlobal {
   header: IHeaderStatus | null
+  footer: IFooterStatus | null
 }

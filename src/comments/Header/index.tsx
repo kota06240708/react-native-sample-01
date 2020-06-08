@@ -4,12 +4,14 @@ import { getStatusBarHeight } from 'react-native-status-bar-height'
 
 import styled from 'styled-components/native'
 
-import { setHeightAction } from '../../actions/Global'
+import { setHeaderAction } from '../../actions/Global'
 import { IHeaderStatus } from '../../types/store/global'
 
 const Wrap: any = styled.View`
   width: 100%;
   background-color: #000;
+  position: relative;
+  z-index: 1;
   padding: ${(props: any) => props.barHeight}px 20px 20px;
 `
 
@@ -26,7 +28,7 @@ const Header: FC = (): ReactElement => {
   const setHeader = useCallback((e: any) => {
     const payload = e.nativeEvent.layout as IHeaderStatus
 
-    dispatch(setHeightAction(payload))
+    dispatch(setHeaderAction(payload))
   }, [])
 
   return (
