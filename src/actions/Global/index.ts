@@ -1,4 +1,4 @@
-import IState from '../../types/store'
+import { IState } from '../../types/store'
 
 import {
   IHeaderStatus,
@@ -21,7 +21,7 @@ export const setHeaderAction: (
   console.log(getState())
 
   return dispatch({
-    type: types.SET_HEADER_STATUS,
+    type: types.SET_HEADER_STATUE,
     payload: data
   })
 }
@@ -32,6 +32,6 @@ export const setFooterAction: (
   data: IFooterStatus
 ) => (dispatch: Dispatch) =>
   dispatch({
-    type: types.SET_FOOTER_STATUS,
+    type: types.SET_FOOTER_STATUE,
     payload: data
   })

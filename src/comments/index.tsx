@@ -1,6 +1,10 @@
-import React, { FC, ReactElement } from 'react'
+import React, { FC, ReactElement, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
+
+import { initDatas } from '../constants/store/todo'
+import { setTodoListAction } from '../actions/Todo'
 
 import Header from './Header'
 import Count from './Count'
@@ -13,6 +17,12 @@ const Wrap: any = styled.View`
 `
 
 const Index: FC = (): ReactElement => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setTodoListAction(initDatas))
+  }, [])
+
   StatusBar.setBarStyle('light-content', true)
 
   return (

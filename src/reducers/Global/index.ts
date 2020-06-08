@@ -27,7 +27,7 @@ const GlobalReducer: Reducer<IGlobal> = (
   let _action: any
 
   switch (action.type) {
-    case types.SET_HEADER_STATUS:
+    case types.SET_HEADER_STATUE:
       _action = action as IHeaderStatusAction
 
       return {
@@ -35,7 +35,7 @@ const GlobalReducer: Reducer<IGlobal> = (
         header: _action.payload
       }
       break
-    case types.SET_FOOTER_STATUS:
+    case types.SET_FOOTER_STATUE:
       _action = action as IFooterStatusAction
 
       return {

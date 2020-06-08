@@ -2,8 +2,7 @@ import React, { FC, ReactElement } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/native'
 import { Button, Card, Icon } from 'react-native-elements'
-import { texts } from '../../constants/example/todo'
-import IState from '../../types/store'
+import { IState } from '../../types/store'
 
 import { countUp } from '../../actions/AppAction'
 
@@ -64,6 +63,7 @@ const Count: FC = (): ReactElement => {
   const onClick = () => dispatch(countUp())
 
   const appSelecter = useSelector((state: IState) => state.app.count)
+  const todos = useSelector((state: IState) => state.todo.todos)
   const getHeaderHeight = useSelector((state: IState) => {
     if (state.global.header === null) {
       return 60
@@ -80,9 +80,9 @@ const Count: FC = (): ReactElement => {
     return state.global.footer.height
   })
 
-  const lists = texts.map((r: any, i: number) => {
+  const lists = todos.map((r: any, i: number) => {
     return (
-      <List width={i !== texts.length - 1 ? 2 : 0} key={i}>
+      <List width={i !== todos.length - 1 ? 2 : 0} key={i}>
         <ListText>{r.title}</ListText>
         <IconWrap>
           <Icon
