@@ -48,8 +48,8 @@ const List: any = styled.View`
 
 const ListText: any = styled.Text`
   font-size: 16px;
-  line-height: 16;
-  letter-spacing: 1;
+  line-height: 16px;
+  letter-spacing: 1px;
   color: #313135;
 `
 
