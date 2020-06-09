@@ -14,7 +14,7 @@ import {
 import { getHeaderHeight, getFooterHeight } from '../../getters/Global'
 import { getTodoListReverse } from '../../getters/Todo'
 
-import CardList from '../Card/List'
+import CardList from './Card/List'
 
 const Wrap: any = styled.View`
   width: 100%;

@@ -7,7 +7,7 @@ import { initDatas } from '../constants/store/todo'
 import { setTodoListAction } from '../actions/Todo'
 
 import Header from './Header'
-import Count from './Count'
+import Count from './Todo'
 import Footer from './Footer'
 
 const Wrap: any = styled.View`
