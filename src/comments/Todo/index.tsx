@@ -58,7 +58,7 @@ const CardWrap: any = styled.View`
   margin-bottom: 60px;
 `
 
-const Count: FC = (): ReactElement => {
+const Todo: FC = (): ReactElement => {
   const [value, updateValue] = useState<string>('')
   const [isDisable, updateDisable] = useState<boolean>(true)
 
@@ -142,4 +142,4 @@ const Count: FC = (): ReactElement => {
   )
 }
 
-export default Count
+export default Todo
