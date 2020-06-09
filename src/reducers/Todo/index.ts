@@ -1,5 +1,3 @@
-import { Action, Reducer } from 'redux'
-
 import * as types from '../../constants/store/todo/store'
 
 import { IAction } from '../../types/store'
@@ -17,19 +15,12 @@ const initState: ITodo = {
  * @param state 現在のステート
  * @param action 渡されたアクション
  */
-const TodoReducer: Reducer<ITodo> = (
-  state: ITodo = initState,
-  action: Action
-) => {
-  let _action: any
-
+export default (state: ITodo = initState, action: IAction) => {
   switch (action.type) {
     case types.SET_TODO_LIST:
-      _action = action as IAction
-
       return {
         ...state,
-        todos: _action.payload.data
+        todos: action.payload.data
       }
       break
     default:
@@ -37,5 +28,3 @@ const TodoReducer: Reducer<ITodo> = (
       break
   }
 }
-
-export default TodoReducer

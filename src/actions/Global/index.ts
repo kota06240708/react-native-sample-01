@@ -1,23 +1,15 @@
-import { IState } from '../../types/store'
-
-import {
-  IHeaderStatus,
-  IHeaderStatusAction,
-  IFooterStatus,
-  IFooterStatusAction
-} from '../../types/store/global'
 import { Dispatch, AnyAction } from 'redux'
-import * as types from '../../constants/store/Global'
+
+import { IState, IAction } from '../../types/store'
+import { IHeaderStatus, IFooterStatus } from '../../types/store/global'
+
+import * as types from '../../constants/store/global'
 
 export const setHeaderAction: (
   data: IHeaderStatus
-) => (
-  dispatch: Dispatch<AnyAction>,
-  getState: () => IState
-) => IHeaderStatusAction = (data: IHeaderStatus) => (
-  dispatch: Dispatch,
-  getState: () => IState
-) => {
+) => (dispatch: Dispatch<AnyAction>, getState: () => IState) => IAction = (
+  data: IHeaderStatus
+) => (dispatch: Dispatch, getState: () => IState) => {
   console.log(getState())
 
   return dispatch({
@@ -28,9 +20,9 @@ export const setHeaderAction: (
 
 export const setFooterAction: (
   data: IFooterStatus
-) => (dispatch: Dispatch<AnyAction>) => IFooterStatusAction = (
-  data: IFooterStatus
-) => (dispatch: Dispatch) =>
+) => (dispatch: Dispatch<AnyAction>) => IAction = (data: IFooterStatus) => (
+  dispatch: Dispatch
+) =>
   dispatch({
     type: types.SET_FOOTER_STATUE,
     payload: data

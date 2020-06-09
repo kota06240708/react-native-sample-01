@@ -1,16 +1,12 @@
-import { Action, Reducer } from 'redux'
+import * as types from '../../constants/store/global'
+import { IAction } from '../../types/store'
 
-import * as types from '../../constants/store/Global'
-import {
-  IGlobal,
-  IHeaderStatusAction,
-  IFooterStatusAction
-} from '../../types/store/global'
+import { IGlobal } from '../../types/store/global'
 
 /**
  * State の初期値
  */
-const initState: IGlobal = {
+const initialState: IGlobal = {
   header: null,
   footer: null
 }
@@ -20,27 +16,18 @@ const initState: IGlobal = {
  * @param state 現在のステート
  * @param action 渡されたアクション
  */
-const GlobalReducer: Reducer<IGlobal> = (
-  state: IGlobal = initState,
-  action: Action
-) => {
-  let _action: any
-
+export default (state: IGlobal = initialState, action: IAction) => {
   switch (action.type) {
     case types.SET_HEADER_STATUE:
-      _action = action as IHeaderStatusAction
-
       return {
         ...state,
-        header: _action.payload
+        header: action.payload
       }
       break
     case types.SET_FOOTER_STATUE:
-      _action = action as IFooterStatusAction
-
       return {
         ...state,
-        header: _action.payload
+        header: action.payload
       }
       break
     default:
@@ -48,5 +35,3 @@ const GlobalReducer: Reducer<IGlobal> = (
       break
   }
 }
-
-export default GlobalReducer
