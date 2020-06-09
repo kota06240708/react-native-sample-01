@@ -1,4 +1,5 @@
-import React, { FC, ReactElement, useState } from 'react'
+import React, { FC, ReactElement, useState, useRef } from 'react'
+import { Animated, Keyboard } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/native'
 import { Card, Input, Button, Icon } from 'react-native-elements'
@@ -59,11 +60,14 @@ const CardWrap: any = styled.View`
 `
 
 const Todo: FC = (): ReactElement => {
+  const ref: any = useRef(null)
+
   const [value, updateValue] = useState<string>('')
   const [isDisable, updateDisable] = useState<boolean>(true)
 
   const dispatch = useDispatch()
 
+  // todoリスト
   const todos = useSelector(getTodoListReverse)
 
   // headerのheight
@@ -87,6 +91,16 @@ const Todo: FC = (): ReactElement => {
     dispatch(addTodoAction(value))
     updateValue('')
     updateDisable(true)
+
+    Keyboard.dismiss() // キーボードをしまう
+
+    if (ref) {
+      if (ref.current === null) {
+        return
+      }
+
+      ref.current.scrollTo({ y: 0 }) // 一番上に戻す
+    }
   }
 
   // inputの処理
@@ -131,7 +145,7 @@ const Todo: FC = (): ReactElement => {
           />
         </ButtonWrap>
       </SendWrap>
-      <ScrollView>
+      <ScrollView ref={ref}>
         <Inner topPadding={headerHeight} bottomPadding={footerHeight}>
           <CardWrap>
             <Card containerStyle={{ padding: 0 }}>{lists}</Card>

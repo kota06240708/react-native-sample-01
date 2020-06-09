@@ -21,13 +21,13 @@ export default (state: IGlobal = initialState, action: IAction) => {
     case types.SET_FOOTER_STATUE:
       return {
         ...state,
-        header: action.payload
+        footer: action.payload.data
       }
       break
     case types.SET_HEADER_STATUE:
       return {
         ...state,
-        header: action.payload
+        header: action.payload.data
       }
       break
     default:

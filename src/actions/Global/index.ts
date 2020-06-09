@@ -12,7 +12,9 @@ export const setHeaderAction: (
 ) => {
   return dispatch({
     type: types.SET_HEADER_STATUE,
-    payload: data
+    payload: {
+      data
+    }
   })
 }
 
@@ -23,5 +25,7 @@ export const setFooterAction: (
 ) =>
   dispatch({
     type: types.SET_FOOTER_STATUE,
-    payload: data
+    payload: {
+      data
+    }
   })
