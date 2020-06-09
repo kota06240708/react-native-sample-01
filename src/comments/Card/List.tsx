@@ -40,8 +40,6 @@ const CardList: FC<TProps> = ({
   onClickComplete,
   onClickDelete
 }: TProps): ReactElement => {
-  console.log(isComplete)
-
   return (
     <List isComplete={isComplete}>
       <ListInner>
