@@ -1,33 +1,50 @@
-import React, { FC, ReactElement } from 'react'
+import React, { FC, ReactElement, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/native'
-import { Button, Card } from 'react-native-elements'
+import { Card, Input, Button, Icon } from 'react-native-elements'
 
-import { IState } from '../../types/store'
-import { ITodoList } from '../../types/store/Todo'
+import { ITodoListReverse } from '../../types/store/Todo'
 
-import { countUp } from '../../actions/AppAction'
-import { deleteTodoListAction, updateCompleteAction } from '../../actions/Todo'
+import {
+  deleteTodoListAction,
+  updateCompleteAction,
+  addTodoAction
+} from '../../actions/Todo'
 
 import { getHeaderHeight, getFooterHeight } from '../../getters/Global'
-import { getTodoList } from '../../getters/Todo'
+import { getTodoListReverse } from '../../getters/Todo'
 
 import CardList from '../Card/List'
 
-const Wrap: any = styled.ScrollView`
+const Wrap: any = styled.View`
   width: 100%;
 `
 
-const Inner: any = styled.ScrollView`
+const SendWrap: any = styled.View`
   width: 100%;
-  padding-bottom: ${(props: any) => props.bottomPadding + 40}px;
-`
-
-const Views: any = styled.View`
-  width: 100%;
+  padding: 20px 20px 0;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 40px;
+`
+
+const InputWrap: any = styled.View`
+  width: 75%;
+`
+
+const ButtonWrap: any = styled.View`
+  width: 20%;
+  padding-bottom: 20px;
+`
+
+const ScrollView: any = styled.ScrollView`
+  width: 100%;
+`
+
+const Inner: any = styled.View`
+  width: 100%;
+  padding-bottom: ${(props: any) => props.bottomPadding + 200}px;
 `
 
 const CardListWrap: any = styled.View`
@@ -36,49 +53,59 @@ const CardListWrap: any = styled.View`
   border-bottom-color: rgba(204, 204, 204, 0.5);
 `
 
-const Text: any = styled.Text`
-  color: #313135;
-  font-size: 40px;
-  text-align: center;
-`
-
-const ButtonWrap: any = styled.View`
-  width: 50%;
-  margin: 0 auto;
-`
-
 const CardWrap: any = styled.View`
   width: 100%;
   margin-bottom: 60px;
 `
 
 const Count: FC = (): ReactElement => {
-  const dispatch = useDispatch()
-  const onClick = () => dispatch(countUp())
+  const [value, updateValue] = useState<string>('')
+  const [isDisable, updateDisable] = useState<boolean>(true)
 
-  const appSelecter = useSelector((state: IState) => state.app.count)
-  const todos = useSelector(getTodoList)
+  const dispatch = useDispatch()
+
+  const todos = useSelector(getTodoListReverse)
+
+  // headerのheight
   const headerHeight = useSelector(getHeaderHeight)
+
+  // footerの高さ
   const footerHeight = useSelector(getFooterHeight)
 
+  // 指定のtodoを削除
   const deleteTodo = (key: number) => {
     dispatch(deleteTodoListAction(key))
   }
 
+  // コンプリートのboolean値を更新
   const updateComplete = (key: number) => {
     dispatch(updateCompleteAction(key))
   }
 
-  const lists = todos.map((r: ITodoList, i: number) => {
-    const { title, isComplete } = r
+  // todoを追加
+  const addTodo = () => {
+    dispatch(addTodoAction(value))
+    updateValue('')
+    updateDisable(true)
+  }
+
+  // inputの処理
+  const onInput = (text: string) => {
+    updateValue(text)
+    updateDisable(!!(text.length === 0))
+  }
+
+  // todoのリスト
+  const lists = todos.map((r: ITodoListReverse, i: number) => {
+    const { title, isComplete, key } = r
 
     return (
       <CardListWrap key={i} width={i !== todos.length - 1 ? 2 : 0}>
         <CardList
           title={title}
           isComplete={isComplete}
-          onClickComplete={() => updateComplete(i)}
-          onClickDelete={() => deleteTodo(i)}
+          onClickComplete={() => updateComplete(key)}
+          onClickDelete={() => deleteTodo(key)}
         />
       </CardListWrap>
     )
@@ -86,25 +113,31 @@ const Count: FC = (): ReactElement => {
 
   return (
     <Wrap>
-      <Inner topPadding={headerHeight} bottomPadding={footerHeight}>
-        <Views>
-          <Text>{appSelecter}</Text>
-        </Views>
-        <CardWrap>
-          <Card containerStyle={{ padding: 0 }}>{lists}</Card>
-        </CardWrap>
+      <SendWrap>
+        <InputWrap>
+          <Input
+            placeholder='ADD TODO'
+            onChangeText={(text: string) => onInput(text)}
+            value={value}
+          />
+        </InputWrap>
         <ButtonWrap>
           <Button
-            title='Loading button'
-            onPress={onClick}
-            raised
-            buttonStyle={{
-              backgroundColor: '#000',
-              paddingLeft: 10
-            }}
+            icon={<Icon name='send' size={15} color='white' />}
+            buttonStyle={{ backgroundColor: '#1fa67a' }}
+            disabledStyle={{ opacity: 0.5 }}
+            onPress={addTodo}
+            disabled={isDisable}
           />
         </ButtonWrap>
-      </Inner>
+      </SendWrap>
+      <ScrollView>
+        <Inner topPadding={headerHeight} bottomPadding={footerHeight}>
+          <CardWrap>
+            <Card containerStyle={{ padding: 0 }}>{lists}</Card>
+          </CardWrap>
+        </Inner>
+      </ScrollView>
     </Wrap>
   )
 }

@@ -12,5 +12,29 @@ export const initDatas: Array<ITodoList> = [
   {
     title: 'hoge2',
     isComplete: false
+  },
+  {
+    title: 'hoge2',
+    isComplete: false
+  },
+  {
+    title: 'hoge2',
+    isComplete: false
+  },
+  {
+    title: 'hoge2',
+    isComplete: false
+  },
+  {
+    title: 'hoge2',
+    isComplete: false
+  },
+  {
+    title: 'hoge2',
+    isComplete: false
+  },
+  {
+    title: 'hoge2',
+    isComplete: false
   }
 ]

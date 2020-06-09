@@ -35,6 +35,27 @@ export const deleteTodoListAction: (
   })
 }
 
+// todoを追加
+export const addTodoAction: (
+  value: string
+) => (dispatch: Dispatch<AnyAction>, getState: () => IState) => IAction = (
+  value: string
+) => (dispatch: Dispatch, getState: () => IState) => {
+  const todos = [...getState().todo.todos]
+
+  todos.push({
+    title: value,
+    isComplete: false
+  })
+
+  return dispatch({
+    type: types.SET_TODO_LIST,
+    payload: {
+      data: todos
+    }
+  })
+}
+
 // コンプリートの状態を更新
 export const updateCompleteAction: (
   key: number
