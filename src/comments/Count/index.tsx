@@ -4,7 +4,10 @@ import styled from 'styled-components/native'
 import { Button, Card } from 'react-native-elements'
 
 import { IState } from '../../types/store'
+import { ITodoList } from '../../types/store/Todo'
+
 import { countUp } from '../../actions/AppAction'
+import { deleteTodoListAction, updateCompleteAction } from '../../actions/Todo'
 
 import { getHeaderHeight, getFooterHeight } from '../../getters/Global'
 import { getTodoList } from '../../getters/Todo'
@@ -58,13 +61,24 @@ const Count: FC = (): ReactElement => {
   const headerHeight = useSelector(getHeaderHeight)
   const footerHeight = useSelector(getFooterHeight)
 
-  const lists = todos.map((r: any, i: number) => {
+  const deleteTodo = (key: number) => {
+    dispatch(deleteTodoListAction(key))
+  }
+
+  const updateComplete = (key: number) => {
+    dispatch(updateCompleteAction(key))
+  }
+
+  const lists = todos.map((r: ITodoList, i: number) => {
+    const { title, isComplete } = r
+
     return (
       <CardListWrap key={i} width={i !== todos.length - 1 ? 2 : 0}>
         <CardList
-          title={r.title}
-          onClickComplete={() => null}
-          onClickDelete={() => null}
+          title={title}
+          isComplete={isComplete}
+          onClickComplete={() => updateComplete(i)}
+          onClickDelete={() => deleteTodo(i)}
         />
       </CardListWrap>
     )

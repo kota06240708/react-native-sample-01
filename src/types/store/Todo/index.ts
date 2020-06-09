@@ -1,8 +1,8 @@
 export interface ITodoList {
   title: string
-  isComplet: boolean
+  isComplete: boolean
 }
 
 export interface ITodo {
-  todos: Array<ITodo>
+  todos: Array<ITodoList>
 }

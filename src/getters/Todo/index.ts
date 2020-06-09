@@ -1,5 +1,5 @@
 import { IState } from '../../types/store'
-import { ITodo } from '../../types/store/Todo'
+import { ITodoList } from '../../types/store/Todo'
 
-export const getTodoList: (state: IState) => ITodo[] = (state: IState) =>
+export const getTodoList: (state: IState) => ITodoList[] = (state: IState) =>
   state.todo.todos

@@ -1,17 +1,15 @@
 import { Dispatch, AnyAction } from 'redux'
 
-import { IState, IAction } from '../../types/store'
+import { IAction } from '../../types/store'
 import { IHeaderStatus, IFooterStatus } from '../../types/store/global'
 
 import * as types from '../../constants/store/global'
 
 export const setHeaderAction: (
   data: IHeaderStatus
-) => (dispatch: Dispatch<AnyAction>, getState: () => IState) => IAction = (
-  data: IHeaderStatus
-) => (dispatch: Dispatch, getState: () => IState) => {
-  console.log(getState())
-
+) => (dispatch: Dispatch<AnyAction>) => IAction = (data: IHeaderStatus) => (
+  dispatch: Dispatch
+) => {
   return dispatch({
     type: types.SET_HEADER_STATUE,
     payload: data
