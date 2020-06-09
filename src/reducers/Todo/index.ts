@@ -6,7 +6,7 @@ import { ITodo } from '../../types/store/Todo'
 /**
  * State の初期値
  */
-const initState: ITodo = {
+const initialState: ITodo = {
   todos: []
 }
 
@@ -15,7 +15,7 @@ const initState: ITodo = {
  * @param state 現在のステート
  * @param action 渡されたアクション
  */
-export default (state: ITodo = initState, action: IAction) => {
+export default (state: ITodo = initialState, action: IAction) => {
   switch (action.type) {
     case types.SET_TODO_LIST:
       return {

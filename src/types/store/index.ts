@@ -1,4 +1,3 @@
-import { IApp } from './app'
 import { IGlobal } from './global'
 import { ITodo } from './Todo'
 
@@ -8,7 +7,6 @@ export interface IAction {
 }
 
 export interface IState {
-  app: IApp
-  global: IGlobal
   todo: ITodo
+  global: IGlobal
 }

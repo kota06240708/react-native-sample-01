@@ -18,13 +18,13 @@ const initialState: IGlobal = {
  */
 export default (state: IGlobal = initialState, action: IAction) => {
   switch (action.type) {
-    case types.SET_HEADER_STATUE:
+    case types.SET_FOOTER_STATUE:
       return {
         ...state,
         header: action.payload
       }
       break
-    case types.SET_FOOTER_STATUE:
+    case types.SET_HEADER_STATUE:
       return {
         ...state,
         header: action.payload
