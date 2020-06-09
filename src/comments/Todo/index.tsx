@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, useState, useRef } from 'react'
-import { Animated, Keyboard } from 'react-native'
+import { Keyboard } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/native'
 import { Card, Input, Button, Icon } from 'react-native-elements'
