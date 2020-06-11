@@ -1,14 +1,14 @@
-import * as types from '../../constants/store/todo/store'
+import * as types from '../../constants/store/todo/store';
 
-import { IAction } from '../../types/store'
-import { ITodo } from '../../types/store/Todo'
+import { IAction } from '../../types/store';
+import { ITodo } from '../../types/store/Todo';
 
 /**
  * State の初期値
  */
 const initialState: ITodo = {
   todos: []
-}
+};
 
 /**
  * Reducer 関数
@@ -21,10 +21,10 @@ export default (state: ITodo = initialState, action: IAction) => {
       return {
         ...state,
         todos: action.payload.data
-      }
-      break
+      };
+      break;
     default:
-      return state
-      break
+      return state;
+      break;
   }
-}
+};

@@ -1,38 +1,38 @@
-import React, { FC, ReactElement } from 'react'
-import styled from 'styled-components/native'
-import { Icon } from 'react-native-elements'
+import React, { FC, ReactElement } from 'react';
+import styled from 'styled-components/native';
+import { Icon } from 'react-native-elements';
 
 type TProps = {
-  title: string
-  isComplete: boolean
-  onClickComplete: () => void
-  onClickDelete: () => void
-}
+  title: string;
+  isComplete: boolean;
+  onClickComplete: () => void;
+  onClickDelete: () => void;
+};
 
 const List: any = styled.View`
   width: 100%;
   position: relative;
   background-color: ${(props: any) => (props.isComplete ? '#1fa67a' : '#fff')};
-`
+`;
 
 const ListInner: any = styled.View`
   width: 100%;
   padding: 20px 20px 10px;
-`
+`;
 
 const ListText: any = styled.Text`
   font-size: 16px;
   line-height: 16px;
   letter-spacing: 1px;
   color: ${(props: any) => (props.isComplete ? '#fff' : '#313135')};
-`
+`;
 
 const IconWrap: any = styled.View`
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-`
+`;
 
 const CardList: FC<TProps> = ({
   title,
@@ -74,7 +74,7 @@ const CardList: FC<TProps> = ({
         </IconWrap>
       </ListInner>
     </List>
-  )
-}
+  );
+};
 
-export default CardList
+export default CardList;

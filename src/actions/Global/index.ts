@@ -1,9 +1,9 @@
-import { Dispatch, AnyAction } from 'redux'
+import { Dispatch, AnyAction } from 'redux';
 
-import { IAction } from '../../types/store'
-import { IHeaderStatus, IFooterStatus } from '../../types/store/global'
+import { IAction } from '../../types/store';
+import { IHeaderStatus, IFooterStatus } from '../../types/store/global';
 
-import * as types from '../../constants/store/global'
+import * as types from '../../constants/store/global';
 
 export const setHeaderAction: (
   data: IHeaderStatus
@@ -15,8 +15,8 @@ export const setHeaderAction: (
     payload: {
       data
     }
-  })
-}
+  });
+};
 
 export const setFooterAction: (
   data: IFooterStatus
@@ -28,4 +28,4 @@ export const setFooterAction: (
     payload: {
       data
     }
-  })
+  });

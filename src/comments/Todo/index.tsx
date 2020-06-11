@@ -1,25 +1,25 @@
-import React, { FC, ReactElement, useState, useRef } from 'react'
-import { Keyboard } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
-import styled from 'styled-components/native'
-import { Card, Input, Button, Icon } from 'react-native-elements'
+import React, { FC, ReactElement, useState, useRef } from 'react';
+import { Keyboard } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components/native';
+import { Card, Input, Button, Icon } from 'react-native-elements';
 
-import { ITodoListReverse } from '../../types/store/Todo'
+import { ITodoListReverse } from '../../types/store/Todo';
 
 import {
   deleteTodoListAction,
   updateCompleteAction,
   addTodoAction
-} from '../../actions/Todo'
+} from '../../actions/Todo';
 
-import { getHeaderHeight, getFooterHeight } from '../../getters/Global'
-import { getTodoListReverse } from '../../getters/Todo'
+import { getHeaderHeight, getFooterHeight } from '../../getters/Global';
+import { getTodoListReverse } from '../../getters/Todo';
 
-import CardList from './Card/List'
+import CardList from './Card/List';
 
 const Wrap: any = styled.View`
   width: 100%;
-`
+`;
 
 const SendWrap: any = styled.View`
   width: 100%;
@@ -28,90 +28,90 @@ const SendWrap: any = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-`
+`;
 
 const InputWrap: any = styled.View`
   width: 75%;
-`
+`;
 
 const ButtonWrap: any = styled.View`
   width: 20%;
   padding-bottom: 20px;
-`
+`;
 
 const ScrollView: any = styled.ScrollView`
   width: 100%;
-`
+`;
 
 const Inner: any = styled.View`
   width: 100%;
   padding-bottom: ${(props: any) => props.bottomPadding + 200}px;
-`
+`;
 
 const CardListWrap: any = styled.View`
   width: 100%;
   border-bottom-width: ${(props: any) => props.width}px;
   border-bottom-color: rgba(204, 204, 204, 0.5);
-`
+`;
 
 const CardWrap: any = styled.View`
   width: 100%;
   margin-bottom: 60px;
-`
+`;
 
 const Todo: FC = (): ReactElement => {
-  const ref: any = useRef(null)
+  const ref: any = useRef(null);
 
-  const [value, updateValue] = useState<string>('')
-  const [isDisable, updateDisable] = useState<boolean>(true)
+  const [value, updateValue] = useState<string>('');
+  const [isDisable, updateDisable] = useState<boolean>(true);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   // todoリスト
-  const todos = useSelector(getTodoListReverse)
+  const todos = useSelector(getTodoListReverse);
 
   // headerのheight
-  const headerHeight = useSelector(getHeaderHeight)
+  const headerHeight = useSelector(getHeaderHeight);
 
   // footerの高さ
-  const footerHeight = useSelector(getFooterHeight)
+  const footerHeight = useSelector(getFooterHeight);
 
   // 指定のtodoを削除
   const deleteTodo = (key: number) => {
-    dispatch(deleteTodoListAction(key))
-  }
+    dispatch(deleteTodoListAction(key));
+  };
 
   // コンプリートのboolean値を更新
   const updateComplete = (key: number) => {
-    dispatch(updateCompleteAction(key))
-  }
+    dispatch(updateCompleteAction(key));
+  };
 
   // todoを追加
   const addTodo = () => {
-    dispatch(addTodoAction(value))
-    updateValue('')
-    updateDisable(true)
+    dispatch(addTodoAction(value));
+    updateValue('');
+    updateDisable(true);
 
-    Keyboard.dismiss() // キーボードをしまう
+    Keyboard.dismiss(); // キーボードをしまう
 
     if (ref) {
       if (ref.current === null) {
-        return
+        return;
       }
 
-      ref.current.scrollTo({ y: 0 }) // 一番上に戻す
+      ref.current.scrollTo({ y: 0 }); // 一番上に戻す
     }
-  }
+  };
 
   // inputの処理
   const onInput = (text: string) => {
-    updateValue(text)
-    updateDisable(!!(text.length === 0))
-  }
+    updateValue(text);
+    updateDisable(!!(text.length === 0));
+  };
 
   // todoのリスト
   const lists = todos.map((r: ITodoListReverse, i: number) => {
-    const { title, isComplete, key } = r
+    const { title, isComplete, key } = r;
 
     return (
       <CardListWrap key={i} width={i !== todos.length - 1 ? 2 : 0}>
@@ -122,8 +122,8 @@ const Todo: FC = (): ReactElement => {
           onClickDelete={() => deleteTodo(key)}
         />
       </CardListWrap>
-    )
-  })
+    );
+  });
 
   return (
     <Wrap>
@@ -153,7 +153,7 @@ const Todo: FC = (): ReactElement => {
         </Inner>
       </ScrollView>
     </Wrap>
-  )
-}
+  );
+};
 
-export default Todo
+export default Todo;

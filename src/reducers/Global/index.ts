@@ -1,7 +1,7 @@
-import * as types from '../../constants/store/global'
-import { IAction } from '../../types/store'
+import * as types from '../../constants/store/global';
+import { IAction } from '../../types/store';
 
-import { IGlobal } from '../../types/store/global'
+import { IGlobal } from '../../types/store/global';
 
 /**
  * State の初期値
@@ -9,7 +9,7 @@ import { IGlobal } from '../../types/store/global'
 const initialState: IGlobal = {
   header: null,
   footer: null
-}
+};
 
 /**
  * Reducer 関数
@@ -22,16 +22,16 @@ export default (state: IGlobal = initialState, action: IAction) => {
       return {
         ...state,
         footer: action.payload.data
-      }
-      break
+      };
+      break;
     case types.SET_HEADER_STATUE:
       return {
         ...state,
         header: action.payload.data
-      }
-      break
+      };
+      break;
     default:
-      return state
-      break
+      return state;
+      break;
   }
-}
+};

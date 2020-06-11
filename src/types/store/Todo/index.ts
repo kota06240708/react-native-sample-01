@@ -1,12 +1,12 @@
 export interface ITodoList {
-  title: string
-  isComplete: boolean
+  title: string;
+  isComplete: boolean;
 }
 
 export interface ITodoListReverse extends ITodoList {
-  key: number
+  key: number;
 }
 
 export interface ITodo {
-  todos: Array<ITodoList>
+  todos: Array<ITodoList>;
 }
