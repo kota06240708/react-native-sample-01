@@ -103,8 +103,8 @@ export const updateCompleteAction: (
         throw 'Document does not exist!';
       }
 
-      const newPopulation = doc.data()!.isComplete as boolean;
-      transaction.update(db.doc(key), { isComplete: !newPopulation });
+      const isComplete = doc.data()!.isComplete as boolean;
+      transaction.update(db.doc(key), { isComplete: !isComplete });
     });
   });
 
