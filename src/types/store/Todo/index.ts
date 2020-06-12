@@ -1,10 +1,8 @@
 export interface ITodoList {
+  key: string;
   title: string;
   isComplete: boolean;
-}
-
-export interface ITodoListReverse extends ITodoList {
-  key: number;
+  createdAt: number;
 }
 
 export interface ITodo {

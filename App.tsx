@@ -6,6 +6,17 @@ import store from './src/store';
 
 import Index from './src/comments';
 
+import { decode, encode } from 'base-64';
+
+// firebaseこれがないと動かなかった
+if (!global.btoa) {
+  global.btoa = encode;
+}
+
+if (!global.atob) {
+  global.atob = decode;
+}
+
 const App: FC = (): ReactElement => {
   return (
     <Provider store={store}>
@@ -15,12 +26,3 @@ const App: FC = (): ReactElement => {
 };
 
 export default App;
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center'
-//   }
-// })

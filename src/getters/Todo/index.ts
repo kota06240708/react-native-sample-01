@@ -1,27 +1,23 @@
 import { IState } from '../../types/store';
-import { ITodoList, ITodoListReverse } from '../../types/store/Todo';
+import { ITodoList } from '../../types/store/Todo';
 
 // todoのリストを返す
 export const getTodoList: (state: IState) => ITodoList[] = (state: IState) =>
   state.todo.todos;
 
 // 反転したtodoのリストを返す
-export const getTodoListReverse: (state: IState) => ITodoListReverse[] = (
+export const getTodoListReverse: (state: IState) => ITodoList[] = (
   state: IState
 ) => {
-  const todos: Array<ITodoListReverse> = [];
+  const todos: Array<ITodoList> = [...state.todo.todos];
 
-  state.todo.todos.forEach((r: ITodoList, i: number) => {
-    const { title, isComplete } = r;
+  if (todos.length === 0) {
+    return todos;
+  }
 
-    const result: ITodoListReverse = {
-      key: i,
-      title,
-      isComplete
-    };
-
-    todos[i] = result;
+  todos.sort((a: ITodoList, b: ITodoList) => {
+    return a.createdAt < b.createdAt ? 1 : -1;
   });
 
-  return todos.length !== 0 ? todos.reverse() : todos;
+  return todos;
 };

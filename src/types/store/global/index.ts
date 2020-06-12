@@ -1,3 +1,5 @@
+import firebase from 'firebase';
+
 export interface IHeaderStatus {
   width: number;
   height: number;
@@ -8,6 +10,7 @@ export interface IHeaderStatus {
 export interface IFooterStatus extends IHeaderStatus {}
 
 export interface IGlobal {
+  firebase: typeof firebase | null;
   header: IHeaderStatus | null;
   footer: IFooterStatus | null;
 }

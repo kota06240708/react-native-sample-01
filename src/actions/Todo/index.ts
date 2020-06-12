@@ -3,6 +3,8 @@ import { ITodoList } from '../../types/store/Todo';
 import { IState, IAction } from '../../types/store';
 import * as types from '../../constants/store/todo/store';
 
+type TFirebaseTransaction = firebase.firestore.Transaction;
+
 // Todoリストをセットアップ
 export const setTodoListAction: (
   data: Array<ITodoList>
@@ -19,18 +21,28 @@ export const setTodoListAction: (
 
 // 指定したTodoを削除
 export const deleteTodoListAction: (
-  key: number
-) => (dispatch: Dispatch<AnyAction>, getState: () => IState) => IAction = (
-  key: number
-) => (dispatch: Dispatch, getState: () => IState) => {
-  const todos = getState().todo.todos.filter((r: ITodoList, i: number) => {
-    return i !== key;
-  });
+  key: string
+) => (
+  dispatch: Dispatch<AnyAction>,
+  getState: () => IState
+) => Promise<IAction | null> = (key: string) => async (
+  dispatch: Dispatch,
+  getState: () => IState
+) => {
+  const firebase = getState().global.firebase;
+
+  if (firebase === null) {
+    return null;
+  }
+
+  const db = firebase.firestore().collection('todo');
+
+  await db.doc(key).delete();
 
   return dispatch({
-    type: types.SET_TODO_LIST,
+    type: 'test',
     payload: {
-      data: todos
+      data: { test: 'hhg' }
     }
   });
 };
@@ -38,38 +50,68 @@ export const deleteTodoListAction: (
 // todoを追加
 export const addTodoAction: (
   value: string
-) => (dispatch: Dispatch<AnyAction>, getState: () => IState) => IAction = (
-  value: string
-) => (dispatch: Dispatch, getState: () => IState) => {
-  const todos = [...getState().todo.todos];
+) => (
+  dispatch: Dispatch<AnyAction>,
+  getState: () => IState
+) => Promise<IAction | null> = (value: string) => async (
+  dispatch: Dispatch,
+  getState: () => IState
+) => {
+  const firebase = getState().global.firebase;
 
-  todos.push({
+  if (firebase === null) {
+    return null;
+  }
+
+  const db = firebase.firestore().collection('todo');
+
+  await db.add({
     title: value,
-    isComplete: false
+    isComplete: false,
+    createdAt: new Date().getTime()
   });
 
   return dispatch({
-    type: types.SET_TODO_LIST,
+    type: 'test',
     payload: {
-      data: todos
+      data: { test: 'hhg' }
     }
   });
 };
 
 // コンプリートの状態を更新
 export const updateCompleteAction: (
-  key: number
-) => (dispatch: Dispatch<AnyAction>, getState: () => IState) => IAction = (
-  key: number
-) => (dispatch: Dispatch, getState: () => IState) => {
-  const todos = [...getState().todo.todos];
+  key: string
+) => (
+  dispatch: Dispatch<AnyAction>,
+  getState: () => IState
+) => Promise<IAction | null> = (key: string) => async (
+  dispatch: Dispatch,
+  getState: () => IState
+) => {
+  const firebase = getState().global.firebase;
 
-  todos[key].isComplete = !todos[key].isComplete;
+  if (firebase === null) {
+    return null;
+  }
+
+  const db = firebase.firestore().collection('todo');
+
+  firebase.firestore().runTransaction((transaction: TFirebaseTransaction) => {
+    return transaction.get(db.doc(key)).then(doc => {
+      if (!doc.exists) {
+        throw 'Document does not exist!';
+      }
+
+      const newPopulation = doc.data()!.isComplete as boolean;
+      transaction.update(db.doc(key), { isComplete: !newPopulation });
+    });
+  });
 
   return dispatch({
-    type: types.SET_TODO_LIST,
+    type: 'test',
     payload: {
-      data: todos
+      data: { test: 'hhg' }
     }
   });
 };

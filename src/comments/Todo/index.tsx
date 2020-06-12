@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
 import { Card, Input, Button, Icon } from 'react-native-elements';
 
-import { ITodoListReverse } from '../../types/store/Todo';
+import { ITodoList } from '../../types/store/Todo';
 
 import {
   deleteTodoListAction,
@@ -77,12 +77,12 @@ const Todo: FC = (): ReactElement => {
   const footerHeight = useSelector(getFooterHeight);
 
   // 指定のtodoを削除
-  const deleteTodo = (key: number) => {
+  const deleteTodo = (key: string) => {
     dispatch(deleteTodoListAction(key));
   };
 
   // コンプリートのboolean値を更新
-  const updateComplete = (key: number) => {
+  const updateComplete = (key: string) => {
     dispatch(updateCompleteAction(key));
   };
 
@@ -110,7 +110,7 @@ const Todo: FC = (): ReactElement => {
   };
 
   // todoのリスト
-  const lists = todos.map((r: ITodoListReverse, i: number) => {
+  const lists = todos.map((r: ITodoList, i: number) => {
     const { title, isComplete, key } = r;
 
     return (
