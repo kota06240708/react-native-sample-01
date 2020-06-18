@@ -23,6 +23,7 @@ React Native の実装のサンプル
 - ['typeScript 対応'](https://qiita.com/tatane616/items/807f08b71748e3d4630f)
 - ['svg を使うときの注意点'](https://qiita.com/gaishimo/items/7a7cd291dca3726e3f95)
 - ['デバッグ'](https://qiita.com/takaishota/items/96802dc7e522aeba058b)
+- ['本番公開後のデバック'](https://qiita.com/mildsummer/items/56dd85802a479690451d)
 
 ### UI
 
