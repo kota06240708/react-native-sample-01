@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './src/store';
 // import styled from 'styled-components/native'
 
-import Index from './src/comments';
+import Index from './src/components';
 
 import { decode, encode } from 'base-64';
 
