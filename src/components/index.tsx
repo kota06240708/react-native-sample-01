@@ -11,6 +11,7 @@ import firebase from '../utils/firebase';
 
 import Header from './Header';
 import Todo from './Todo';
+import Camera from './Camera';
 import Footer from './Footer';
 
 type TFirebaseSnapShot = firebase.firestore.QuerySnapshot<
@@ -50,27 +51,13 @@ const Index: FC = (): ReactElement => {
       });
   }, []);
 
-  // firebase
-  // .firestore()
-  // .collection('test')
-  // .add({
-  //   name: 'Los Angeles',
-  //   state: 'CA',
-  //   country: 'USA'
-  // })
-  // .then(() => {
-  //   console.log('成功');
-  // })
-  // .catch(function (error) {
-  //   console.error('失敗', error);
-  // });
-
   StatusBar.setBarStyle('light-content', true);
 
   return (
     <Wrap>
       <Header />
-      <Todo />
+      {/* <Todo /> */}
+      <Camera />
       <Footer />
     </Wrap>
   );

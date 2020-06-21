@@ -50,6 +50,18 @@ React Native の実装のサンプル
 - [iOS/Android ストア申請用のビルド](https://tech.maricuru.com/entry/2018/11/06/180000)
 - [[Android] アプリを Google Play Console に登録する](https://akira-watson.com/android/developer-console.html)
 
+### アナリティクス
+
+- [expo のアナリティクス](https://qiita.com/kaba/items/03bb6c9453b3231c514c)
+
+### カメラ
+
+- [React Native ＋ OpenGL で画像処理](https://blog.narumium.net/2019/10/07/react-native%EF%BC%8Bopengl%E3%81%A7%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86/)
+
+- [gl-rect サンプル](https://gl-react-cookbook.surge.sh/hellogl?menu=true)
+
+- [react-native-expo でカメラビューの opengl 処理](https:。；・lp//blog.narumium.net/2020/03/16/react-native-expo%E3%81%A7%E3%82%AB%E3%83%A1%E3%83%A9%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AEopengl%E5%87%A6%E7%90%86/)
+
 ### その他
 
 - ['React Native の実は使ってはダメなライブラリ素晴らしいライブラリ'](https://qiita.com/kaba/items/569aafd80889bb5d9328)
