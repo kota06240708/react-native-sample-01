@@ -7,6 +7,7 @@ import { IGlobal } from '../../types/store/global';
  * State の初期値
  */
 const initialState: IGlobal = {
+  scene: 'Camera',
   firebase: null,
   header: null,
   footer: null
@@ -19,6 +20,11 @@ const initialState: IGlobal = {
  */
 export default (state: IGlobal = initialState, action: IAction) => {
   switch (action.type) {
+    case types.SET_SCENE:
+      return {
+        ...state,
+        scene: action.payload.data
+      };
     case types.SET_FIREBASE:
       return {
         ...state,

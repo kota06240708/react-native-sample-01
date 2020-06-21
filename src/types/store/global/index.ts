@@ -1,5 +1,7 @@
 import firebase from 'firebase';
 
+export type TScene = 'Camera' | 'Todo';
+
 export interface IHeaderStatus {
   width: number;
   height: number;
@@ -10,6 +12,7 @@ export interface IHeaderStatus {
 export interface IFooterStatus extends IHeaderStatus {}
 
 export interface IGlobal {
+  scene: TScene;
   firebase: typeof firebase | null;
   header: IHeaderStatus | null;
   footer: IFooterStatus | null;

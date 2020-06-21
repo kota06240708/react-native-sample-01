@@ -1,10 +1,12 @@
 import React, { FC, ReactElement, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { StatusBar } from 'react-native';
 import styled from 'styled-components/native';
 
 import { setFirebase } from '../actions/Global';
 import { setTodoListAction } from '../actions/Todo';
+
+import { getScene } from '../getters/Global';
 
 import { ITodoList } from '../types/store/Todo';
 import firebase from '../utils/firebase';
@@ -31,6 +33,8 @@ const Wrap: any = styled.View`
 const Index: FC = (): ReactElement => {
   const dispatch = useDispatch();
 
+  const sceneState = useSelector(getScene);
+
   useEffect(() => {
     dispatch(setFirebase(firebase));
 
@@ -53,11 +57,22 @@ const Index: FC = (): ReactElement => {
 
   StatusBar.setBarStyle('light-content', true);
 
+  const scene = () => {
+    let result = null;
+
+    if (sceneState === 'Camera') {
+      result = <Camera />;
+    } else if (sceneState === 'Todo') {
+      result = <Todo />;
+    }
+
+    return result;
+  };
+
   return (
     <Wrap>
       <Header />
-      {/* <Todo /> */}
-      <Camera />
+      {scene()}
       <Footer />
     </Wrap>
   );

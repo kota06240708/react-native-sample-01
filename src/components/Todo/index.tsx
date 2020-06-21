@@ -92,8 +92,6 @@ const Todo: FC = (): ReactElement => {
     updateValue('');
     updateDisable(true);
 
-    Keyboard.dismiss(); // キーボードをしまう
-
     if (ref) {
       if (ref.current === null) {
         return;

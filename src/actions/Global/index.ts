@@ -2,9 +2,21 @@ import { Dispatch, AnyAction } from 'redux';
 import firebase from 'firebase';
 
 import { IAction } from '../../types/store';
-import { IHeaderStatus, IFooterStatus } from '../../types/store/global';
+import { IHeaderStatus, IFooterStatus, TScene } from '../../types/store/global';
 
 import * as types from '../../constants/store/global';
+
+export const setSceneAction: (
+  data: TScene
+) => (dispatch: Dispatch<AnyAction>) => IAction = (data: TScene) => (
+  dispatch: Dispatch
+) =>
+  dispatch({
+    type: types.SET_SCENE,
+    payload: {
+      data
+    }
+  });
 
 export const setFirebase: (
   data: typeof firebase

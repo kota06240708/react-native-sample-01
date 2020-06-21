@@ -1,3 +1,4 @@
+export const SET_SCENE = 'SET_SCENE';
 export const SET_FIREBASE = 'SET_FIREBASE';
 export const SET_HEADER_STATUE = 'SET_HEADER_STATUE';
 export const SET_FOOTER_STATUE = 'SET_FOOTER_STATUE';

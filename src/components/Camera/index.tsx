@@ -15,6 +15,11 @@ const Wrap: any = styled.View`
   flex: 1;
 `;
 
+const ErrorWrap: any = styled.View`
+  flex: 1;
+  background-color: #000;
+`;
+
 const CameraInner: any = styled.View`
   flex: 1;
   position: relative;
@@ -42,10 +47,6 @@ const SuccessText: any = styled.Text`
   font-weight: bold;
   text-align: center;
   align-self: center;
-`;
-
-const Text: any = styled.Text`
-  font-size: 12px;
 `;
 
 const CameraCommponent: FC = (): ReactElement => {
@@ -119,7 +120,7 @@ const CameraCommponent: FC = (): ReactElement => {
       </CameraInner>
     </Camera>
   ) : (
-    <Text>失敗</Text>
+    <ErrorWrap />
   );
 
   return <Wrap>{camera}</Wrap>;

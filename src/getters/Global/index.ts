@@ -1,8 +1,13 @@
+import { TScene } from '../../types/store/global';
 import { IState } from '../../types/store';
 
 type TFirebaseCollection = firebase.firestore.CollectionReference<
   firebase.firestore.DocumentData
 >;
+
+export const getScene: (state: IState) => TScene = (state: IState) => {
+  return state.global.scene;
+};
 
 export const getHeaderHeight: (state: IState) => number = (state: IState) => {
   if (state.global.header === null) {
